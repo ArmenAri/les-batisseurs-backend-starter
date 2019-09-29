@@ -1,0 +1,55 @@
+title: Player
+type: object
+x-examples:
+  example-1:
+    value:
+      id: 1
+      finishedBuildings: []
+      underConstructionBuildings: []
+      availableWorkers:
+        - id: 200
+          price: 2
+          stone: 0
+          wood: 0
+          knowledge: 1
+          tile: 1
+      money: 10
+      victoryPoints: 0
+      actions: 3
+properties:
+  id:
+    type: number
+    description: Id of the player between 1 and 4.
+    minimum: 1
+    maximum: 4
+  finishedBuildings:
+    type: array
+    description: Buildings finished
+    items:
+      $ref: ./building.v1.yaml
+  availableWorkers:
+    type: array
+    description: Available workers
+    items:
+      $ref: ./worker.v1.yaml
+  underConstructionBuildings:
+    type: array
+    description: Under construction buildings
+    items:
+      $ref: ./building.v1.yaml
+  money:
+    type: number
+    description: Money of the player
+  victoryPoints:
+    type: number
+    description: Number of victory point the player has. Without the money part until the end of the game.
+  actions:
+    type: number
+required:
+  - id
+  - finishedBuildings
+  - availableWorkers
+  - underConstructionBuildings
+  - money
+  - victoryPoints
+  - actions

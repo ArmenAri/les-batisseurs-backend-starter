@@ -1,0 +1,28 @@
+title: GameInfo
+type: object
+description: Game
+x-examples:
+  example-1:
+    value:
+      id: fb6f3fb9-7cf9-495c-9219-d67d3702b603
+      name: test
+      numberOfPlayers: 4
+      createdDate: '2019-09-23T19:01:16.180Z'
+      done: false
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  numberOfPlayers:
+    type: number
+  done:
+    type: boolean
+  createdDate:
+    type: string
+required:
+  - id
+  - name
+  - numberOfPlayers
+  - done
+  - createdDate

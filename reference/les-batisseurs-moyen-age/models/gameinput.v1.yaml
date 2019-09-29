@@ -1,0 +1,23 @@
+title: GameInput
+type: object
+x-examples:
+  example-1:
+    numberOfPlayers: 2
+    value:
+      numberOfPlayers: 4
+      name: test
+properties:
+  numberOfPlayers:
+    type: number
+    minimum: 2
+    maximum: 4
+    description: Number of players in the game
+  shuffle:
+    type: boolean
+    default: true
+    description: Will the deck be shuffle
+  name:
+    type: string
+required:
+  - numberOfPlayers
+  - name

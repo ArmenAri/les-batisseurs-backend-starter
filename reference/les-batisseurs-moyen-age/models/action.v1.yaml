@@ -1,0 +1,53 @@
+title: action
+type: object
+x-examples:
+  End turn:
+    value:
+      type: END_TURN
+  Take building:
+    value:
+      type: TAKE_BUILDING
+      buildingId: 101
+  Take worker:
+    value:
+      type: TAKE_WORKER
+      workerId: 202
+  Take money:
+    value:
+      type: TAKE_MONEY
+      numberOfActions: 1
+  Send worker:
+    value:
+      type: SEND_WORKER
+      buildingId: 101
+      workerId: 202
+  Buy action:
+    value:
+      type: BUY_ACTION
+      numberOfActions: 1
+properties:
+  type:
+    type: string
+    enum:
+      - TAKE_BUILDING
+      - TAKE_WORKER
+      - TAKE_MONEY
+      - SEND_WORKER
+      - BUY_ACTION
+      - END_TURN
+    description: Type of the action
+  payload:
+    type: object
+    description: Parameters of the action
+    properties:
+      buildingId:
+        type: string
+        description: Building id for TAKE_BUILDING or SEND_WORKER actions.
+      workerId:
+        type: string
+        description: Worker id for TAKE_WORKER or SEND_WORKER actions
+      numberOfActions:
+        type: number
+        description: Numbers of action for the TAKE_MONEY action
+required:
+  - type

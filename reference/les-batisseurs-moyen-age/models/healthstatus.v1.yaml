@@ -1,0 +1,11 @@
+title: healthStatus
+type: object
+x-examples:
+  app si ok:
+    value:
+      health: ok
+properties:
+  health:
+    type: string
+required:
+  - health

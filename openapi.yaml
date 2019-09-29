@@ -1,0 +1,742 @@
+openapi: 3.0.0
+info:
+  title: Les Bâtisseurs - Moyen-Âge
+  version: "1.0"
+  description: API pour le jeu de société Les Bâtisseurs - Moyen-Âge Backend
+  contact:
+    name: Julien Usson
+    email: julien@usson.me
+    url: https://cours.usson.me
+servers:
+  - url: http://localhost:3000
+    description: Local
+paths:
+  /games:
+    post:
+      summary: Create a game
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Game
+                type: object
+                description: ""
+                x-examples:
+                  example-1:
+                    id: XwPp9xazJ0ku5CZnlmgAx2Dld8SHkAeT
+                    numberOfPlayers: 4
+                    currentPlayer: 0
+                    value:
+                      id: adcf6675-4bb9-4da2-8705-72138a9dc993
+                      name: test
+                      currentPlayer: 1
+                      moneyAvailable: 70
+                      done: false
+                      workers:
+                        - id: 238
+                          price: 5
+                          stone: 2
+                          wood: 0
+                          knowledge: 0
+                          tile: 3
+                        - id: 212
+                          price: 3
+                          stone: 1
+                          wood: 0
+                          knowledge: 0
+                          tile: 2
+                        - id: 229
+                          price: 4
+                          stone: 2
+                          wood: 0
+                          knowledge: 0
+                          tile: 2
+                        - id: 225
+                          price: 4
+                          stone: 1
+                          wood: 0
+                          knowledge: 3
+                          tile: 0
+                        - id: 202
+                          price: 2
+                          stone: 0
+                          wood: 1
+                          knowledge: 1
+                          tile: 0
+                      buildings:
+                        - id: 107
+                          reward: 0
+                          victory point: 2
+                          stone: 2
+                          wood: 1
+                          knowledge: 0
+                          tile: 0
+                          stone produced: 0
+                          wood produced: 0
+                          knowledge produced: 0
+                          tile produced: 3
+                        - id: 139
+                          reward: 20
+                          victory point: 6
+                          stone: 5
+                          wood: 2
+                          knowledge: 5
+                          tile: 0
+                          stone produced: 0
+                          wood produced: 0
+                          knowledge produced: 0
+                          tile produced: 0
+                        - id: 103
+                          reward: 0
+                          victory point: 1
+                          stone: 1
+                          wood: 0
+                          knowledge: 1
+                          tile: 0
+                          stone produced: 0
+                          wood produced: 2
+                          knowledge produced: 0
+                          tile produced: 0
+                        - id: 113
+                          reward: 8
+                          victory point: 0
+                          stone: 0
+                          wood: 1
+                          knowledge: 1
+                          tile: null
+                          stone produced: 0
+                          wood produced: 0
+                          knowledge produced: 0
+                          tile produced: 0
+                        - id: 125
+                          reward: 14
+                          victory point: 3
+                          stone: 0
+                          wood: 3
+                          knowledge: 1
+                          tile: 3
+                          stone produced: 0
+                          wood produced: 0
+                          knowledge produced: 0
+                          tile produced: 0
+                      remainingWorkers: 34
+                      remainingBuildings: 37
+                      nextWorker:
+                        id: 231
+                        price: 4
+                        stone: 2
+                        wood: 1
+                        knowledge: 1
+                        tile: 0
+                      nextBuilding:
+                        id: 130
+                        reward: 16
+                        victory point: 4
+                        stone: 1
+                        wood: 3
+                        knowledge: 3
+                        tile: 1
+                        stone produced: 0
+                        wood produced: 0
+                        knowledge produced: 0
+                        tile produced: 0
+                      createdDate: 2019-09-23T19:53:23.413Z
+                      players:
+                        - id: 1
+                          finishedBuildings: []
+                          underConstructionBuildings: []
+                          availableWorkers:
+                            - id: 201
+                              price: 2
+                              stone: 0
+                              wood: 1
+                              knowledge: 0
+                              tile: 1
+                          money: 10
+                          victoryPoints: 0
+                        - id: 2
+                          finishedBuildings: []
+                          underConstructionBuildings: []
+                          availableWorkers:
+                            - id: 200
+                              price: 2
+                              stone: 0
+                              wood: 0
+                              knowledge: 1
+                              tile: 1
+                          money: 10
+                          victoryPoints: 0
+                        - id: 3
+                          finishedBuildings: []
+                          underConstructionBuildings: []
+                          availableWorkers:
+                            - id: 205
+                              price: 2
+                              stone: 1
+                              wood: 1
+                              knowledge: 0
+                              tile: 0
+                          money: 10
+                          victoryPoints: 0
+                properties:
+                  id:
+                    type: string
+                    description: Id of the game
+                  currentPlayer:
+                    type: number
+                    maximum: 4
+                    minimum: 1
+                    description: Current player id
+                  moneyAvailable:
+                    type: number
+                    description: Money available in the game
+                  workers:
+                    type: array
+                    description: worker cards available
+                    items:
+                      title: Worker
+                      type: object
+                      x-examples:
+                        example-1:
+                          id: 0
+                          price: 2
+                          stone: 0
+                          wood: 0
+                          knowledge: 1
+                          tile: 1
+                          value:
+                            id: "222"
+                            price: "4"
+                            stone: "0"
+                            wood: "2"
+                            knowledge: "2"
+                            tile: "0"
+                      properties:
+                        id:
+                          type: number
+                        price:
+                          type: number
+                        stone:
+                          type: number
+                        wood:
+                          type: number
+                        knowledge:
+                          type: number
+                        tile:
+                          type: number
+                      required:
+                        - id
+                        - price
+                        - stone
+                        - wood
+                        - knowledge
+                        - tile
+                  buildings:
+                    type: array
+                    description: Building cards available
+                    items:
+                      title: Building
+                      type: object
+                      x-examples:
+                        example-1:
+                          id: 14
+                          reward: 8
+                          victoryPoint: 0
+                          stone: 1
+                          wood: 0
+                          knowledge: 0
+                          tile: 1
+                          value:
+                            id: "128"
+                            reward: "16"
+                            victory point: "4"
+                            stone: "0"
+                            wood: "3"
+                            knowledge: "2"
+                            tile: "3"
+                            stone produced: "0"
+                            wood produced: "0"
+                            knowledge produced: "0"
+                            tile produced: "0"
+                      properties:
+                        id:
+                          type: number
+                        reward:
+                          type: number
+                        victoryPoint:
+                          type: number
+                        stone:
+                          type: number
+                        wood:
+                          type: number
+                        knowledge:
+                          type: number
+                        tile:
+                          type: number
+                        stoneProduced:
+                          type: number
+                        woodProduced:
+                          type: number
+                        knowledgeProduced:
+                          type: number
+                        tileProduced:
+                          type: number
+                        done:
+                          type: boolean
+                          description: Is building done
+                        workers:
+                          type: array
+                          description: Workers working on the building
+                          items:
+                            $ref: "#/paths/~1games/post/responses/200/content/appli\
+                              cation~1json/schema/properties/workers/items"
+                      required:
+                        - id
+                        - reward
+                        - victoryPoint
+                        - stone
+                        - wood
+                        - knowledge
+                        - tile
+                  remainingWorkers:
+                    type: number
+                    description: Number of card in the workers deck
+                  remainingBuildings:
+                    type: number
+                    description: Number of card in the buildings deck
+                  nextWorker:
+                    $ref: "#/paths/~1games/post/responses/200/content/application~1\
+                      json/schema/properties/workers/items"
+                  nextBuilding:
+                    $ref: "#/paths/~1games/post/responses/200/content/application~1\
+                      json/schema/properties/buildings/items"
+                  done:
+                    type: boolean
+                    description: Is game done
+                  name:
+                    type: string
+                  createDate:
+                    type: string
+                  players:
+                    type: array
+                    items:
+                      title: Player
+                      type: object
+                      x-examples:
+                        example-1:
+                          value:
+                            id: 1
+                            finishedBuildings: []
+                            underConstructionBuildings: []
+                            availableWorkers:
+                              - id: 200
+                                price: 2
+                                stone: 0
+                                wood: 0
+                                knowledge: 1
+                                tile: 1
+                            money: 10
+                            victoryPoints: 0
+                            actions: 3
+                      properties:
+                        id:
+                          type: number
+                          description: Id of the player between 1 and 4.
+                          minimum: 1
+                          maximum: 4
+                        finishedBuildings:
+                          type: array
+                          description: Buildings finished
+                          items:
+                            $ref: "#/paths/~1games/post/responses/200/content/appli\
+                              cation~1json/schema/properties/buildings/items"
+                        availableWorkers:
+                          type: array
+                          description: Available workers
+                          items:
+                            $ref: "#/paths/~1games/post/responses/200/content/appli\
+                              cation~1json/schema/properties/workers/items"
+                        underConstructionBuildings:
+                          type: array
+                          description: Under construction buildings
+                          items:
+                            $ref: "#/paths/~1games/post/responses/200/content/appli\
+                              cation~1json/schema/properties/buildings/items"
+                        money:
+                          type: number
+                          description: Money of the player
+                        victoryPoints:
+                          type: number
+                          description: Number of victory point the player has. Without the
+                            money part until the end of the game.
+                        actions:
+                          type: number
+                      required:
+                        - id
+                        - finishedBuildings
+                        - availableWorkers
+                        - underConstructionBuildings
+                        - money
+                        - victoryPoints
+                        - actions
+                required:
+                  - id
+                  - currentPlayer
+                  - moneyAvailable
+                  - workers
+                  - buildings
+                  - remainingWorkers
+                  - remainingBuildings
+                  - nextWorker
+                  - nextBuilding
+                  - done
+                  - name
+                  - createDate
+                  - players
+      description: Create and initialise a game
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: GameInput
+              type: object
+              x-examples:
+                example-1:
+                  numberOfPlayers: 2
+                  value:
+                    numberOfPlayers: 4
+                    name: test
+              properties:
+                numberOfPlayers:
+                  type: number
+                  minimum: 2
+                  maximum: 4
+                  description: Number of players in the game
+                shuffle:
+                  type: boolean
+                  default: true
+                  description: Will the deck be shuffle
+                name:
+                  type: string
+              required:
+                - numberOfPlayers
+                - name
+    parameters: []
+    get:
+      summary: Get all games
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: GameInfo
+                  type: object
+                  description: Game
+                  x-examples:
+                    example-1:
+                      value:
+                        id: fb6f3fb9-7cf9-495c-9219-d67d3702b603
+                        name: test
+                        numberOfPlayers: 4
+                        createdDate: 2019-09-23T19:01:16.180Z
+                        done: false
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    numberOfPlayers:
+                      type: number
+                    done:
+                      type: boolean
+                    createdDate:
+                      type: string
+                  required:
+                    - id
+                    - name
+                    - numberOfPlayers
+                    - done
+                    - createdDate
+      description: Get all games
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: name
+          description: Name filter
+        - schema:
+            type: string
+          in: query
+          name: done
+          description: Done filter
+        - schema:
+            type: string
+          in: query
+          name: id
+          description: Id filter
+  "/games/{gameId}":
+    get:
+      summary: Get a game
+      description: Get a game by its id.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1games/post/responses/200/content/application~1json\
+                  /schema"
+        "404":
+          description: Game not found.
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+  "/games/{gameId}/actions":
+    parameters:
+      - type: string
+        name: gameId
+        in: path
+        required: true
+    post:
+      summary: Play an action
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1games/post/responses/200/content/application~1json\
+                  /schema"
+        "400":
+          description: Can't execute this action.
+        "401":
+          description: It's not the player turn.
+      description: Play an action in the game
+      parameters:
+        - schema:
+            type: number
+          in: header
+          name: player-id
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: action
+              type: object
+              x-examples:
+                End turn:
+                  value:
+                    type: END_TURN
+                Take building:
+                  value:
+                    type: TAKE_BUILDING
+                    buildingId: 101
+                Take worker:
+                  value:
+                    type: TAKE_WORKER
+                    workerId: 202
+                Take money:
+                  value:
+                    type: TAKE_MONEY
+                    numberOfActions: 1
+                Send worker:
+                  value:
+                    type: SEND_WORKER
+                    buildingId: 101
+                    workerId: 202
+                Buy action:
+                  value:
+                    type: BUY_ACTION
+                    numberOfActions: 1
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - TAKE_BUILDING
+                    - TAKE_WORKER
+                    - TAKE_MONEY
+                    - SEND_WORKER
+                    - BUY_ACTION
+                    - END_TURN
+                  description: Type of the action
+                payload:
+                  type: object
+                  description: Parameters of the action
+                  properties:
+                    buildingId:
+                      type: string
+                      description: Building id for TAKE_BUILDING or SEND_WORKER actions.
+                    workerId:
+                      type: string
+                      description: Worker id for TAKE_WORKER or SEND_WORKER actions
+                    numberOfActions:
+                      type: number
+                      description: Numbers of action for the TAKE_MONEY action
+              required:
+                - type
+  /health:
+    get:
+      summary: Get application status
+      tags: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: healthStatus
+                type: object
+                x-examples:
+                  app si ok:
+                    value:
+                      health: ok
+                properties:
+                  health:
+                    type: string
+                required:
+                  - health
+              examples:
+                app is ok:
+                  value:
+                    health: ok
+      requestBody: {}
+      description: Get application status
+  /cards/workers:
+    get:
+      summary: Get all workers cards
+      tags: []
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: Worker
+                  type: object
+                  x-examples:
+                    example-1:
+                      id: 0
+                      price: 2
+                      stone: 0
+                      wood: 0
+                      knowledge: 1
+                      tile: 1
+                      value:
+                        id: "222"
+                        price: "4"
+                        stone: "0"
+                        wood: "2"
+                        knowledge: "2"
+                        tile: "0"
+                  properties:
+                    id:
+                      type: number
+                    price:
+                      type: number
+                    stone:
+                      type: number
+                    wood:
+                      type: number
+                    knowledge:
+                      type: number
+                    tile:
+                      type: number
+                  required:
+                    - id
+                    - price
+                    - stone
+                    - wood
+                    - knowledge
+                    - tile
+      description: Get all workers cards
+      requestBody: {}
+  /cards/buildings:
+    get:
+      summary: Get all buildings cards
+      tags: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: Building
+                  type: object
+                  x-examples:
+                    example-1:
+                      id: 14
+                      reward: 8
+                      victoryPoint: 0
+                      stone: 1
+                      wood: 0
+                      knowledge: 0
+                      tile: 1
+                      value:
+                        id: "128"
+                        reward: "16"
+                        victory point: "4"
+                        stone: "0"
+                        wood: "3"
+                        knowledge: "2"
+                        tile: "3"
+                        stone produced: "0"
+                        wood produced: "0"
+                        knowledge produced: "0"
+                        tile produced: "0"
+                  properties:
+                    id:
+                      type: number
+                    reward:
+                      type: number
+                    victoryPoint:
+                      type: number
+                    stone:
+                      type: number
+                    wood:
+                      type: number
+                    knowledge:
+                      type: number
+                    tile:
+                      type: number
+                    stoneProduced:
+                      type: number
+                    woodProduced:
+                      type: number
+                    knowledgeProduced:
+                      type: number
+                    tileProduced:
+                      type: number
+                    done:
+                      type: boolean
+                      description: Is building done
+                    workers:
+                      type: array
+                      description: Workers working on the building
+                      items:
+                        $ref: "#/paths/~1games/post/responses/200/content/applicati\
+                          on~1json/schema/properties/workers/items"
+                  required:
+                    - id
+                    - reward
+                    - victoryPoint
+                    - stone
+                    - wood
+                    - knowledge
+                    - tile
+      description: Get all buildings cards
+components:
+  schemas: {}

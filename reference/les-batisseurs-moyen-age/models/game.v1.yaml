@@ -1,0 +1,217 @@
+title: Game
+type: object
+description: ''
+x-examples:
+  example-1:
+    id: XwPp9xazJ0ku5CZnlmgAx2Dld8SHkAeT
+    numberOfPlayers: 4
+    currentPlayer: 0
+    value:
+      id: adcf6675-4bb9-4da2-8705-72138a9dc993
+      name: test
+      currentPlayer: 1
+      moneyAvailable: 70
+      done: false
+      workers:
+        - id: 238
+          price: 5
+          stone: 2
+          wood: 0
+          knowledge: 0
+          tile: 3
+        - id: 212
+          price: 3
+          stone: 1
+          wood: 0
+          knowledge: 0
+          tile: 2
+        - id: 229
+          price: 4
+          stone: 2
+          wood: 0
+          knowledge: 0
+          tile: 2
+        - id: 225
+          price: 4
+          stone: 1
+          wood: 0
+          knowledge: 3
+          tile: 0
+        - id: 202
+          price: 2
+          stone: 0
+          wood: 1
+          knowledge: 1
+          tile: 0
+      buildings:
+        - id: 107
+          reward: 0
+          victory point: 2
+          stone: 2
+          wood: 1
+          knowledge: 0
+          tile: 0
+          stone produced: 0
+          wood produced: 0
+          knowledge produced: 0
+          tile produced: 3
+        - id: 139
+          reward: 20
+          victory point: 6
+          stone: 5
+          wood: 2
+          knowledge: 5
+          tile: 0
+          stone produced: 0
+          wood produced: 0
+          knowledge produced: 0
+          tile produced: 0
+        - id: 103
+          reward: 0
+          victory point: 1
+          stone: 1
+          wood: 0
+          knowledge: 1
+          tile: 0
+          stone produced: 0
+          wood produced: 2
+          knowledge produced: 0
+          tile produced: 0
+        - id: 113
+          reward: 8
+          victory point: 0
+          stone: 0
+          wood: 1
+          knowledge: 1
+          tile: null
+          stone produced: 0
+          wood produced: 0
+          knowledge produced: 0
+          tile produced: 0
+        - id: 125
+          reward: 14
+          victory point: 3
+          stone: 0
+          wood: 3
+          knowledge: 1
+          tile: 3
+          stone produced: 0
+          wood produced: 0
+          knowledge produced: 0
+          tile produced: 0
+      remainingWorkers: 34
+      remainingBuildings: 37
+      nextWorker:
+        id: 231
+        price: 4
+        stone: 2
+        wood: 1
+        knowledge: 1
+        tile: 0
+      nextBuilding:
+        id: 130
+        reward: 16
+        victory point: 4
+        stone: 1
+        wood: 3
+        knowledge: 3
+        tile: 1
+        stone produced: 0
+        wood produced: 0
+        knowledge produced: 0
+        tile produced: 0
+      createdDate: '2019-09-23T19:53:23.413Z'
+      players:
+        - id: 1
+          finishedBuildings: []
+          underConstructionBuildings: []
+          availableWorkers:
+            - id: 201
+              price: 2
+              stone: 0
+              wood: 1
+              knowledge: 0
+              tile: 1
+          money: 10
+          victoryPoints: 0
+        - id: 2
+          finishedBuildings: []
+          underConstructionBuildings: []
+          availableWorkers:
+            - id: 200
+              price: 2
+              stone: 0
+              wood: 0
+              knowledge: 1
+              tile: 1
+          money: 10
+          victoryPoints: 0
+        - id: 3
+          finishedBuildings: []
+          underConstructionBuildings: []
+          availableWorkers:
+            - id: 205
+              price: 2
+              stone: 1
+              wood: 1
+              knowledge: 0
+              tile: 0
+          money: 10
+          victoryPoints: 0
+properties:
+  id:
+    type: string
+    description: Id of the game
+  currentPlayer:
+    type: number
+    maximum: 4
+    minimum: 1
+    description: Current player id
+  moneyAvailable:
+    type: number
+    description: Money available in the game
+  workers:
+    type: array
+    description: worker cards available
+    items:
+      $ref: ./worker.v1.yaml
+  buildings:
+    type: array
+    description: Building cards available
+    items:
+      $ref: ./building.v1.yaml
+  remainingWorkers:
+    type: number
+    description: Number of card in the workers deck
+  remainingBuildings:
+    type: number
+    description: Number of card in the buildings deck
+  nextWorker:
+    $ref: ./worker.v1.yaml
+  nextBuilding:
+    $ref: ./building.v1.yaml
+  done:
+    type: boolean
+    description: Is game done
+  name:
+    type: string
+  createDate:
+    type: string
+  players:
+    type: array
+    items:
+      $ref: ./player.v1.yaml
+required:
+  - id
+  - currentPlayer
+  - moneyAvailable
+  - workers
+  - buildings
+  - remainingWorkers
+  - remainingBuildings
+  - nextWorker
+  - nextBuilding
+  - done
+  - name
+  - createDate
+  - players

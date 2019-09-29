@@ -1,0 +1,37 @@
+title: Worker
+type: object
+x-examples:
+  example-1:
+    id: 0
+    price: 2
+    stone: 0
+    wood: 0
+    knowledge: 1
+    tile: 1
+    value:
+      id: '222'
+      price: '4'
+      stone: '0'
+      wood: '2'
+      knowledge: '2'
+      tile: '0'
+properties:
+  id:
+    type: number
+  price:
+    type: number
+  stone:
+    type: number
+  wood:
+    type: number
+  knowledge:
+    type: number
+  tile:
+    type: number
+required:
+  - id
+  - price
+  - stone
+  - wood
+  - knowledge
+  - tile
