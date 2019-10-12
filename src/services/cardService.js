@@ -1,68 +1,46 @@
-import read from "read-file"
+import path from "path"
+import fs from "fs"
 
-function readFile(file) {
-  const buffer = read.sync(file, "utf-8")
-  return buffer
+const fsWrapper = arg =>
+  new Promise((resolve, reject) => {
+    fs.readFile(arg, "utf8", (err, response) => {
+      if (err) {
+        return reject(err)
+      }
+      return resolve(response)
+    })
+  })
+
+function toJSON(response) {
+  const lines = response.split("\n")
+  const result = []
+  const headers = lines[0].split(";")
+
+  for (let i = 1; i < lines.length; i++) {
+    const obj = {}
+    const currentline = lines[i].split(";")
+
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentline[j]
+    }
+
+    result.push(obj)
+  }
+  return result
 }
 
-module.exports = {
-  convertToJSON: function(csv) {
-    var lines = readFile(csv).split("\n")
-    var result = []
-    var headers = lines[0].split(";")
-
-    for (var i = 1; i < lines.length; i++) {
-      var obj = {}
-
-      var row = lines[i]
-      var queryIdx = 0
-      var startValueIdx = 0
-      var idx = 0
-
-      if (row.trim() === "") {
-        continue
-      }
-
-      while (idx < row.length) {
-        /* if we meet a double quote we skip until the next one */
-        var c = row[idx]
-
-        if (c === '"') {
-          do {
-            c = row[++idx]
-          } while (c !== '"' && idx < row.length - 1)
-        }
-
-        if (
-          c === ";" ||
-          /* handle end of line with no comma */ idx === row.length - 1
-        ) {
-          /* we've got a value */
-          var value = row.substr(startValueIdx, idx - startValueIdx).trim()
-
-          /* skip first double quote */
-          if (value[0] === '"') {
-            value = value.substr(1)
-          }
-          /* skip last comma */
-          if (value[value.length - 1] === ",") {
-            value = value.substr(0, value.length - 1)
-          }
-          /* skip last double quote */
-          if (value[value.length - 1] === '"') {
-            value = value.substr(0, value.length - 1)
-          }
-
-          var key = headers[queryIdx++]
-          obj[key] = value
-          startValueIdx = idx + 1
-        }
-
-        ++idx
-      }
-
-      result.push(obj)
+export function importWorkers() {
+  return fsWrapper(path.join(__dirname, "/../ressources/workers.csv")).then(
+    value => {
+      return toJSON(value)
     }
-    return result
-  }
+  )
+}
+
+export function importBuildings() {
+  return fsWrapper(path.join(__dirname, "/../ressources/buildings.csv")).then(
+    value => {
+      return toJSON(value)
+    }
+  )
 }
