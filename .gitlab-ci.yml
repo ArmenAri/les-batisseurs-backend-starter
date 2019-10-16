@@ -10,3 +10,11 @@ test:
     stage: test
     script: 
         - npm run test
+        - npm run lint
+    cache:
+        paths:
+        - node_modules/
+    only:
+        - feature/
+        - master
+        - merge_requests
