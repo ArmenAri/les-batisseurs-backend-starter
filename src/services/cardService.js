@@ -36,7 +36,7 @@ export function csvToJSON(fileContent) {
 
 export async function importWorkers() {
   const buildingsFile = await readFile(path.join(__dirname, PATH_TO_WORKERS))
-  return buildingsFile
+  return csvToJSON(buildingsFile)
 }
 
 export async function importBuildings() {
