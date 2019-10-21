@@ -16,7 +16,6 @@ export async function readFile(arg) {
 }
 
 export function csvToJSON(fileContent) {
-  console.log(fileContent)
   const lines = fileContent.split("\n")
   const result = []
   const headers = lines[0].split(";")
