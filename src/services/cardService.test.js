@@ -27,12 +27,12 @@ id;price;stone;wood;knowledge;tile
     )
     expect(response).toStrictEqual([
       {
-        id: "200",
-        knowledge: "1",
-        price: "2",
-        stone: "0",
-        tile: "1",
-        wood: "0"
+        id: 200,
+        knowledge: 1,
+        price: 2,
+        stone: 0,
+        tile: 1,
+        wood: 0
       }
     ])
   })

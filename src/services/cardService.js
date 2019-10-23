@@ -14,7 +14,7 @@ export function csvToJSON(fileContent) {
     const currentline = lines[i].split(";")
 
     for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = currentline[j]
+      obj[headers[j]] = Number.parseInt(currentline[j])
     }
 
     result.push(obj)
