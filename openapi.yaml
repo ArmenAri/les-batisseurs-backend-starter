@@ -8,7 +8,7 @@ info:
     email: julien@usson.me
     url: https://cours.usson.me
 servers:
-  - url: http://localhost:16123
+  - url: http://localhost:3000
     description: Local
 paths:
   /games:

@@ -1,21 +1,18 @@
 import * as cardService from "../services/cardService"
-import fs from "fs"
-
-jest.mock("fs")
+import readFile from "../utils/readFile"
+jest.mock("../utils/readFile")
 
 describe("readFile", () => {
   test("reading a file and returning its content", async () => {
-    fs.readFile.mockImplementation((_path, _opt, callback) =>
-      callback(null, "foo")
-    )
-    const response = await cardService.readFile("PATH")
+    readFile.mockImplementation(_path => Promise.resolve("foo"))
+    const response = await readFile("PATH")
     expect(response).toStrictEqual("foo")
   })
   test("reading file and returning error", async () => {
-    fs.readFile.mockImplementation((_path, _opt, callback) =>
-      callback(new Error("Error message !"))
+    readFile.mockImplementation(_path =>
+      Promise.reject(new Error("Error message !"))
     )
-    const response = cardService.readFile("PATH")
+    const response = readFile("PATH")
     await expect(response).rejects.toThrow("Error message !")
   })
 })

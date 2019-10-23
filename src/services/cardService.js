@@ -1,19 +1,8 @@
 import path from "path"
-import fs from "fs"
+import readFile from "../utils/readFile"
 
 const PATH_TO_WORKERS = "/../ressources/workers.csv"
 const PATH_TO_BUILDINGS = "/../ressources/buildings.csv"
-
-export async function readFile(arg) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(arg, "utf8", (err, response) => {
-      if (err) {
-        return reject(err)
-      }
-      return resolve(response)
-    })
-  })
-}
 
 export function csvToJSON(fileContent) {
   const lines = fileContent.split("\n")

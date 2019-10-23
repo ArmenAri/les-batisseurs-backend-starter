@@ -4,6 +4,7 @@
 
 * [Armen ARISTAKESYAN](//gitlab.com/ArmenAri) - Developer
 * [Florian BOUCHUT](//gitlab.com/Bouchut) - Developer
+* [Alexis GEORGES](//gitlab.com/AlexisGrgs) - Developer
 
 ### Special Thanks To
 
