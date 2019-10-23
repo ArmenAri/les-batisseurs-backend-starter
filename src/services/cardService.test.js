@@ -1,21 +1,4 @@
 import * as cardService from "../services/cardService"
-import readFile from "../utils/readFile"
-jest.mock("../utils/readFile")
-
-describe("readFile", () => {
-  test("reading a file and returning its content", async () => {
-    readFile.mockImplementation(_path => Promise.resolve("foo"))
-    const response = await readFile("PATH")
-    expect(response).toStrictEqual("foo")
-  })
-  test("reading file and returning error", async () => {
-    readFile.mockImplementation(_path =>
-      Promise.reject(new Error("Error message !"))
-    )
-    const response = readFile("PATH")
-    await expect(response).rejects.toThrow("Error message !")
-  })
-})
 
 describe("csvToJson", () => {
   test("transform a csv to a javascript object", async () => {
