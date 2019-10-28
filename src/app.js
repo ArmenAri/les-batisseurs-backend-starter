@@ -4,6 +4,7 @@ import swaggerUi from "swagger-ui-express"
 import bodyParser from "body-parser"
 import morgan from "morgan"
 import helmet from "helmet"
+import cors from "cors"
 import routes from "./routes"
 import errorHandler from "./middlewares/errorHandler"
 
@@ -27,6 +28,7 @@ app.use(
 
 // Middlewares
 app.use(helmet())
+app.use(cors({ origin: "*" }))
 app.use(morgan("short"))
 app.use(bodyParser.json())
 app.use(routes)
