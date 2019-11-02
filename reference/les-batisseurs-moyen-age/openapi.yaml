@@ -27,6 +27,19 @@ paths:
           application/json:
             schema:
               $ref: ./models/gameinput.v1.yaml
+            examples:
+              Default:
+                value:
+                  name: test
+                  numberOfPlayers: 4
+              No sorts:
+                value:
+                  name: test
+                  numberOfPlayers: 4
+                  shuffle: false
+      tags:
+        - Game
+      operationId: createGame
     parameters: []
     get:
       summary: Get all games
@@ -56,6 +69,9 @@ paths:
           in: query
           name: id
           description: Id filter
+      tags:
+        - Game
+      operationId: findAllGames
   '/games/{gameId}':
     get:
       summary: Get a game
@@ -69,6 +85,9 @@ paths:
                 $ref: ./models/game.v1.yaml
         '404':
           description: Game not found.
+      operationId: getGame
+      tags:
+        - Game
     parameters:
       - schema:
           type: string
@@ -77,7 +96,8 @@ paths:
         required: true
   '/games/{gameId}/actions':
     parameters:
-      - type: string
+      - schema:
+          type: string
         name: gameId
         in: path
         required: true
@@ -106,10 +126,39 @@ paths:
           application/json:
             schema:
               $ref: ./models/action.v1.yaml
+            examples:
+              End turn:
+                value:
+                  type: END_TURN
+              Take building:
+                value:
+                  type: TAKE_BUILDING
+                  buildingId: 101
+              Take worker:
+                value:
+                  type: TAKE_WORKER
+                  workerId: 202
+              Take money:
+                value:
+                  type: TAKE_MONEY
+                  numberOfActions: 1
+              Send worker:
+                value:
+                  type: SEND_WORKER
+                  buildingId: 101
+                  workerId: 202
+              Buy action:
+                value:
+                  type: BUY_ACTION
+                  numberOfActions: 1
+      operationId: playAction
+      tags:
+        - Game
   /health:
     get:
       summary: Get application status
-      tags: []
+      tags:
+        - Health
       responses:
         '200':
           description: OK
@@ -121,12 +170,13 @@ paths:
                 app is ok:
                   value:
                     health: ok
-      requestBody: {}
       description: Get application status
+      operationId: getHealth
   /cards/workers:
     get:
       summary: Get all workers cards
-      tags: []
+      tags:
+        - Cards
       responses:
         '200':
           description: OK
@@ -138,11 +188,12 @@ paths:
                 items:
                   $ref: ./models/worker.v1.yaml
       description: Get all workers cards
-      requestBody: {}
+      operationId: findAllWorkers
   /cards/buildings:
     get:
       summary: Get all buildings cards
-      tags: []
+      tags:
+        - Cards
       responses:
         '200':
           description: OK
@@ -153,5 +204,6 @@ paths:
                 items:
                   $ref: ./models/building.v1.yaml
       description: Get all buildings cards
+      operationId: findAllBuildings
 components:
   schemas: {}
