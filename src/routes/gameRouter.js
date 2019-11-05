@@ -2,14 +2,12 @@ import express from "express"
 const router = express.Router()
 
 router.post("/", function(req, res) {
-  const numberOfPlayers = req.body.numberOfPlayers
-  const shuffle = req.body.shuffle
   const name = req.body.name
+  const numberOfPlayers = req.body.numberOfPlayers
 
   res.send({
-    numberOfPlayers: numberOfPlayers,
-    shuffle: shuffle,
-    name: name
+    name: name,
+    numberOfPlayers: numberOfPlayers
   })
 })
 

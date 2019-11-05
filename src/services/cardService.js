@@ -1,5 +1,6 @@
 import path from "path"
 import readFile from "../utils/readFile"
+import camelCase from "lodash/camelCase"
 
 const PATH_TO_WORKERS = "/../ressources/workers.csv"
 const PATH_TO_BUILDINGS = "/../ressources/buildings.csv"
@@ -14,7 +15,7 @@ export function csvToJSON(fileContent) {
     const currentline = lines[i].split(";")
 
     for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = Number.parseInt(currentline[j])
+      obj[camelCase(headers[j])] = Number.parseInt(currentline[j])
     }
 
     result.push(obj)

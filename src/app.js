@@ -6,9 +6,18 @@ import morgan from "morgan"
 import helmet from "helmet"
 import routes from "./routes"
 import errorHandler from "./middlewares/errorHandler"
+import cors from "cors"
 
 // App creation
 const app = express()
+
+app.use(
+  cors({
+    origin: "*",
+    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
+    allowMethods: "GET, PUT, POST, DELETE, OPTIONS"
+  })
+)
 
 // Swagger UI
 app.use(
