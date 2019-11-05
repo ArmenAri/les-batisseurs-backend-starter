@@ -7,7 +7,6 @@ import helmet from "helmet"
 import cors from "cors"
 import routes from "./routes"
 import errorHandler from "./middlewares/errorHandler"
-import cors from "cors"
 
 // App creation
 const app = express()
