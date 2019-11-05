@@ -44,9 +44,6 @@ properties:
     type: number
   tileProduced:
     type: number
-  done:
-    type: boolean
-    description: Is building done
   workers:
     type: array
     description: Workers working on the building
