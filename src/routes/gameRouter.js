@@ -1,5 +1,7 @@
 import express from "express"
 import * as gameService from "../services/gameService"
+import * as saveService from "../services/saveService"
+
 const router = express.Router()
 
 router.post("/", async function(req, res) {
@@ -9,7 +11,10 @@ router.post("/", async function(req, res) {
 
   const game = await gameService.initGame(name, numberOfPlayers, shuffle)
   const { _private, ...returnedGame } = game
+
   res.send(returnedGame)
+
+  saveService.saveGame(returnedGame)
 })
 
 export default router
