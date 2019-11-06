@@ -4,12 +4,6 @@
   "description": "Les Bâtisseurs - Moyen-Âge Backend",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --exec './node_modules/.bin/babel-node' src/index.js -e js,json,yaml",
-    "start:debug": "nodemon --inspect --exec './node_modules/.bin/babel-node' src/index.js -e js,json,yaml",
-    "lint": "'./node_modules/.bin/eslint' ./src",
-    "lint:fix": "'./node_modules/.bin/eslint' ./src --fix",
-    "test": "'./node_modules/.bin/jest'",
-    "openapi:merge": "'./node_modules/.bin/speccy' resolve reference/les-batisseurs-moyen-age/openapi.yaml -o openapi.yaml",
     "start": "nodemon --exec babel-node src/index.js -e js,json,yaml --ignore storage/ --ignore '*.test.js'",
     "start:debug": "nodemon --inspect --exec babel-node src/index.js -e js,json,yaml --ignore storage/ --ignore '*.test.js'",
     "lint": "eslint ./src",
